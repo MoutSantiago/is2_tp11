@@ -1,5 +1,8 @@
+"""Módulo con la implementación del algoritmo de Collatz."""
 
-def collatz(num):
+
+def collatz(num: int) -> int:
+    """Calcular la cantidad de iteraciones de la conjetura de Collatz."""
     iteraciones = 0
 
     while num != 1:
@@ -13,7 +16,8 @@ def collatz(num):
     return iteraciones
 
 
-def main():
+def main() -> None:
+    """Solicitar un número al usuario e imprimir sus iteraciones."""
     entrada = input("Ingrese un número entero positivo (máximo 1999): ")
 
     try:
@@ -38,5 +42,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

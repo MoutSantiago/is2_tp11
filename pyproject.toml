@@ -20,11 +20,11 @@ where = ["src"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
-addopts = "--cov=src --cov-report=term-missing --cov-fail-under=85"
+addopts = "--cov=src/json2csv --cov-report=term-missing --cov-fail-under=85"
 
 [tool.coverage.run]
 branch = true
-source = ["src"]
+source = ["src/json2csv"]
 
 [tool.coverage.report]
 show_missing = true
