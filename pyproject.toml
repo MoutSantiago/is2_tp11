@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "json2csv"
+version = "0.1.0"
+description = "Conversor de archivos JSON a CSV con estrategia de filtro."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+dependencies = []
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "--cov=src/json2csv --cov-report=term-missing --cov-fail-under=85"
+
+[tool.coverage.run]
+branch = true
+source = ["src/json2csv"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 85
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError"
+]
+
+[tool.black]
+line-length = 79
+target-version = ["py312"]
+extend-exclude = '/docs/|/\{\{cookiecutter\.[a-z_]+\}\}/|\.ipynb$'
+
+[tool.ruff]
+line-length = 79
+target-version = "py312"
+extend-exclude = [
+    "docs",
+    "*cookiecutter*",
+    "*.ipynb",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "D"]
+ignore = ["D203", "D213"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src"]
+mypy_path = "src"
+strict = true
+warn_unreachable = true
+show_error_codes = true
+
+[tool.pyright]
+include = ["src", "tests"]
+extraPaths = ["src"]
+exclude = ["**/__pycache__", "docs"]
+venvPath = "."
+venv = ".venv"
+
+[tool.pydocstyle]
+convention = "pep257"
+match-dir = '(?!tests|docs|\{\{cookiecutter)[^.].*'
+add-ignore = "D203,D213"
+
+[tool.bandit]
+exclude_dirs = ["tests", "docs", "template"]
