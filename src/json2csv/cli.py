@@ -62,7 +62,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(error, file=sys.stderr)
         return 1
     if args.output:
-        Path(args.output).write_text(resultado, encoding="utf-8")
+        with Path(args.output).open(
+            "w", encoding="utf-8", newline=""
+        ) as archivo:
+            archivo.write(resultado)
     else:
         sys.stdout.write(resultado)
     return 0

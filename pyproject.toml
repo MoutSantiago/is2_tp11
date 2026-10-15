@@ -38,7 +38,7 @@ exclude_lines = [
 [tool.black]
 line-length = 79
 target-version = ["py312"]
-extend-exclude = '/docs/|/\{\{cookiecutter\.[a-z_]+\}\}/'
+extend-exclude = '/docs/|/\{\{cookiecutter\.[a-z_]+\}\}/|\.ipynb$'
 
 [tool.ruff]
 line-length = 79
@@ -46,6 +46,7 @@ target-version = "py312"
 extend-exclude = [
     "docs",
     "*cookiecutter*",
+    "*.ipynb",
 ]
 
 [tool.ruff.lint]
